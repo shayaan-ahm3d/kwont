@@ -3,7 +3,7 @@
 
 #include "Message.hpp"
 
-enum struct SystemEventCode : char8_t {
+enum struct SystemEventCode : char {
     START_OF_MESSAGES = 'O',
     START_OF_SYSTEM_HOURS = 'S',
     START_OF_MARKET_HOURS = 'Q',
@@ -15,7 +15,7 @@ enum struct SystemEventCode : char8_t {
 struct SystemEventMessage : public Message {
     SystemEventCode eventCode;
 
-    explicit SystemEventMessage(std::vector<uint8_t>);
+    explicit SystemEventMessage(std::span<char> rawData);
 };
 
-#endif //KWONT_SYSTEM_EVENT_MESSAGE_HPP
+#endif  // KWONT_SYSTEM_EVENT_MESSAGE_HPP

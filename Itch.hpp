@@ -3,12 +3,12 @@
 
 #include <filesystem>
 #include <vector>
-#include "Message.hpp"
+#include "messages/Message.hpp"
 
 class Itch {
-public:
-    std::vector<Message> exchangeMessages;
+   public:
+    std::vector<std::unique_ptr<Message>> exchangeMessages {};
 
     explicit Itch(std::filesystem::path itchFilepath);
 };
-#endif //KWONT_ITCH_HPP
+#endif  // KWONT_ITCH_HPP

@@ -1,0 +1,13 @@
+#ifndef KWONT_MESSAGE_FACTORY_HPP
+#define KWONT_MESSAGE_FACTORY_HPP
+
+#include <memory>
+
+#include "Message.hpp"
+
+class MessageFactory {
+public:
+    std::unique_ptr<Message> create(char* messageType);
+};
+
+#endif  // KWONT_MESSAGE_FACTORY_HPP
