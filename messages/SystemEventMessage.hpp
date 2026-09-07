@@ -12,7 +12,7 @@ enum struct SystemEventCode : char {
     END_OF_MESSAGES = 'C'
 };
 
-struct SystemEventMessage : public Message {
+struct SystemEventMessage : Message {
     SystemEventCode eventCode;
 
     explicit SystemEventMessage(std::span<char> rawData);

@@ -2,29 +2,34 @@
 #include <utility>
 
 #include "Itch.hpp"
+
+#include <iostream>
 #include "messages/MessageFactory.hpp"
 
-Itch::Itch(std::filesystem::path itchFilepath) {
-    std::ifstream itchFile{itchFilepath, std::ifstream::binary};
-    if (itchFile) {
-        itchFile.seekg(0, itchFile.end);
+Itch::Itch(const std::filesystem::path& itchFilepath) {
+    if (std::ifstream itchFile{itchFilepath, std::ifstream::binary}) {
+        itchFile.seekg(0, std::ifstream::end);
         const int fileSize = itchFile.tellg();
-        itchFile.seekg(0, itchFile.beg);
+        itchFile.seekg(0, std::ifstream::beg);
 
-        char* buffer = new char[fileSize];
+        char* const buffer = new char[fileSize];
         itchFile.read(buffer, fileSize);
 
-        MessageFactory messageFactory;
         char* filePtr = buffer;
 
-        while (filePtr <= buffer + fileSize) {
-            // find valid message
-            while (not charToMessageType.contains(*filePtr)) {
-                filePtr++;
+        while (filePtr < buffer + fileSize - BYTES_FOR_SIZE and exchangeMessages.size() < 10) {
+            const int size = (filePtr[0] << BITS_PER_BYTE) | filePtr[1];
+            filePtr += BYTES_FOR_SIZE;
+            if (filePtr + size < buffer + fileSize) {
+                auto message = MessageFactory::create(filePtr);
+                // jump forward by the size of the message
+                filePtr += size;
+                //std::cout << message->messageType << "\n";
+                exchangeMessages.emplace_back(std::move(message)); // move after accessing messageType so no nullptr
+                std::cout << "size: " << filePtr-buffer << "\n";
+            } else {
+                break;
             }
-            auto message = messageFactory.create(filePtr);
-            exchangeMessages.emplace_back(std::move(message));
-            filePtr += messageTypeToSize.at(std::to_underlying(message->messageType));
         }
 
         delete[] buffer;

@@ -26,7 +26,7 @@
 #include "DirectListingWithCapitalRaiseMessage.hpp"
 
 std::unique_ptr<Message> MessageFactory::create(char* messageType) {
-    std::span<char> rawData{messageType, static_cast<size_t>(messageTypeToSize.at(*messageType))};
+    std::span rawData{messageType, static_cast<size_t>(messageTypeToSize.at(*messageType))};
     switch (*messageType) {
         case 'S': return std::make_unique<SystemEventMessage>(rawData);
         case 'R': return std::make_unique<StockDirectoryMessage>(rawData);
@@ -51,5 +51,7 @@ std::unique_ptr<Message> MessageFactory::create(char* messageType) {
         case 'I': return std::make_unique<NoiiMessage>(rawData);
         case 'N': return std::make_unique<RpiiMessage>(rawData);
         case 'O': return std::make_unique<DirectListingWithCapitalRaiseMessage>(rawData);
+        default: throw std::logic_error{"Unknown message type"};
     }
+    std::unreachable();
 }

@@ -10,6 +10,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(frozen)
 
 set(CMAKE_CXX_STANDARD 26)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(kwont
   Main.cpp
@@ -69,11 +71,14 @@ add_executable(kwont
   messages/DirectListingWithCapitalRaiseMessage.hpp
 )
 
+target_link_libraries(kwont PRIVATE frozen::frozen)
+
 target_compile_options(kwont PRIVATE
   -Wall
   -Wextra
   -Wpedantic
   -fsanitize=address,undefined
+  -funsigned-char
 )
 
 target_link_options(kwont PRIVATE
