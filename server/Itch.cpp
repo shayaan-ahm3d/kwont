@@ -45,5 +45,6 @@ Itch::Itch(const std::filesystem::path& itchFilepath) {
         delete[] buffer;
     }
     exchangePublisher.close();
-    zmq_ctx_destroy(&context);
+    context.shutdown();
+    context.close();
 }

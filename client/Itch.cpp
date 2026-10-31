@@ -13,6 +13,7 @@ Itch::Itch(const std::string_view address) {
     zmq::context_t context{};
     zmq::socket_t subscriber{context, zmq::socket_type::sub};
     subscriber.connect(address.data());
+    subscriber.set(zmq::sockopt::subscribe, "");
 
     while (exchangeMessages.size() < 10) {
         std::cout << "Num of Exchange Messages: " << exchangeMessages.size() << std::endl;
@@ -24,5 +25,6 @@ Itch::Itch(const std::string_view address) {
         exchangeMessages.emplace_back(std::move(exchangeMessage));
     }
     subscriber.close();
-    zmq_ctx_destroy(&context);
+    context.shutdown();
+    context.close();
 }
