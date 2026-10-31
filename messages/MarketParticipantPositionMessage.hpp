@@ -27,7 +27,7 @@ struct MarketParticipantPositionMessage : Message {
     MarketMakerMode marketMakerMode;
     MarketParticipantState marketParticipantState;
 
-    explicit MarketParticipantPositionMessage(std::span<char> rawData);
+    explicit MarketParticipantPositionMessage(std::span<const char> rawData);
 };
 
 #endif

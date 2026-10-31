@@ -9,7 +9,7 @@ struct OrderReplaceMessage : Message {
     uint32_t shares;
     uint32_t price; // price(4)
 
-    explicit OrderReplaceMessage(std::span<char> rawData);
+    explicit OrderReplaceMessage(std::span<const char> rawData);
 };
 
 #endif

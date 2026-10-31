@@ -14,7 +14,7 @@ struct OperationalHaltMessage : Message {
     MarketCode marketCode;
     bool operationalHaltAction;
 
-    explicit OperationalHaltMessage(std::span<char> rawData);
+    explicit OperationalHaltMessage(std::span<const char> rawData);
 };
 
 #endif

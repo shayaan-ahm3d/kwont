@@ -12,7 +12,7 @@ enum struct BreachedLevel : char {
 struct MwcbStatusMessage : Message {
     BreachedLevel breachedLevel;
 
-    explicit MwcbStatusMessage(std::span<char> rawData);
+    explicit MwcbStatusMessage(std::span<const char> rawData);
 };
 
 #endif

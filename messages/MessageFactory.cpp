@@ -25,7 +25,7 @@
 #include "RpiiMessage.hpp"
 #include "DirectListingWithCapitalRaiseMessage.hpp"
 
-std::unique_ptr<Message> MessageFactory::create(char* messageType) {
+std::unique_ptr<Message> MessageFactory::create(const char* messageType) {
     std::span rawData{messageType, static_cast<size_t>(messageTypeToSize.at(*messageType))};
     switch (*messageType) {
         case 'S': return std::make_unique<SystemEventMessage>(rawData);

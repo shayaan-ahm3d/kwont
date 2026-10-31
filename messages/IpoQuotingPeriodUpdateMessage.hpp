@@ -14,7 +14,7 @@ struct IpoQuotingPeriodUpdateMessage : Message {
     IpoQuotationReleaseQualifier ipoQuotationReleaseQualifier;
     uint32_t price; //price(4)
 
-    explicit IpoQuotingPeriodUpdateMessage(std::span<char> rawData);
+    explicit IpoQuotingPeriodUpdateMessage(std::span<const char> rawData);
 };
 
 #endif

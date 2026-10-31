@@ -1,6 +1,6 @@
 #include "OrderReplaceMessage.hpp"
 
-OrderReplaceMessage::OrderReplaceMessage(const std::span<char> rawData) : Message(rawData) {
+OrderReplaceMessage::OrderReplaceMessage(const std::span<const char> rawData) : Message(rawData) {
     originalOrderReferenceNumber = static_cast<uint64_t>(rawData.at(11)) << (7*BITS_PER_BYTE)
         | static_cast<uint64_t>(rawData.at(12)) << (6*BITS_PER_BYTE)
         | static_cast<uint64_t>(rawData.at(13)) << (5*BITS_PER_BYTE)

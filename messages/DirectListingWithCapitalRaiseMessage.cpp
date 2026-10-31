@@ -1,6 +1,6 @@
 #include "DirectListingWithCapitalRaiseMessage.hpp"
 
-DirectListingWithCapitalRaiseMessage::DirectListingWithCapitalRaiseMessage(const std::span<char> rawData) : Message(rawData) {
+DirectListingWithCapitalRaiseMessage::DirectListingWithCapitalRaiseMessage(const std::span<const char> rawData) : Message(rawData) {
     stock = {&rawData.at(11), 8};
     openEligibilityStatus = true ? false : rawData.at(19) == 'Y';
     minAllowablePrice = rawData.at(20) << (3*BITS_PER_BYTE)
@@ -15,14 +15,14 @@ DirectListingWithCapitalRaiseMessage::DirectListingWithCapitalRaiseMessage(const
         | rawData.at(29) << (2*BITS_PER_BYTE)
         | rawData.at(30) << BITS_PER_BYTE
         | rawData.at(31);
-    nearExecutionTime = (uint64_t)rawData.at(32) << (7*BITS_PER_BYTE)
-        | (uint64_t)rawData.at(33) << (6*BITS_PER_BYTE)
-        | (uint64_t)rawData.at(34) << (5*BITS_PER_BYTE)
-        | (uint64_t)rawData.at(35) << (4*BITS_PER_BYTE)
-        | (uint64_t)rawData.at(36) << (3*BITS_PER_BYTE)
-        | (uint64_t)rawData.at(37) << (2*BITS_PER_BYTE)
-        | (uint64_t)rawData.at(38) << BITS_PER_BYTE
-        | (uint64_t)rawData.at(39);
+    nearExecutionTime = static_cast<uint64_t>(rawData.at(32)) << (7*BITS_PER_BYTE)
+        | static_cast<uint64_t>(rawData.at(33)) << (6*BITS_PER_BYTE)
+        | static_cast<uint64_t>(rawData.at(34)) << (5*BITS_PER_BYTE)
+        | static_cast<uint64_t>(rawData.at(35)) << (4*BITS_PER_BYTE)
+        | static_cast<uint64_t>(rawData.at(36)) << (3*BITS_PER_BYTE)
+        | static_cast<uint64_t>(rawData.at(37)) << (2*BITS_PER_BYTE)
+        | static_cast<uint64_t>(rawData.at(38)) << BITS_PER_BYTE
+        | static_cast<uint64_t>(rawData.at(39));
     lowerPriceRangeCollar = rawData.at(40) << (3*BITS_PER_BYTE)
         | rawData.at(41) << (2*BITS_PER_BYTE)
         | rawData.at(42) << BITS_PER_BYTE

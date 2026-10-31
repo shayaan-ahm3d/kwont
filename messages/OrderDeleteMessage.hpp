@@ -6,7 +6,7 @@
 struct OrderDeleteMessage : Message {
     uint64_t orderReferenceNumber;
 
-    explicit OrderDeleteMessage(std::span<char> rawData);
+    explicit OrderDeleteMessage(std::span<const char> rawData);
 };
 
 #endif

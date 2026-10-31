@@ -1,14 +1,15 @@
-#ifndef KWONT_ITCH_HPP
-#define KWONT_ITCH_HPP
+#ifndef CLIENT_ITCH_HPP
+#define CLIENT_ITCH_HPP
 
 #include <filesystem>
 #include <vector>
-#include "messages/Message.hpp"
+
+#include "../messages/Message.hpp"
 
 class Itch {
-   public:
+public:
     std::vector<std::unique_ptr<Message>> exchangeMessages {}; // different message subclasses so need unique_ptr as would do dynamic dispatch in Java
 
-    explicit Itch(const std::filesystem::path& itchFilepath);
+    explicit Itch(std::string_view address);
 };
-#endif  // KWONT_ITCH_HPP
+#endif  // CLIENT_ITCH_HPP

@@ -9,7 +9,7 @@ struct OrderExecutedMessage : Message {
     uint32_t executedShares;
     uint64_t matchNumber;
 
-    explicit OrderExecutedMessage(std::span<char> rawData);
+    explicit OrderExecutedMessage(std::span<const char> rawData);
 };
 
 #endif

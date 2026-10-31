@@ -7,7 +7,7 @@ struct OrderExecutedWithPriceMessage : OrderExecutedMessage {
     bool printable;
     uint32_t executionPrice;
 
-    explicit OrderExecutedWithPriceMessage(std::span<char> rawData);
+    explicit OrderExecutedWithPriceMessage(std::span<const char> rawData);
 };
 
 #endif

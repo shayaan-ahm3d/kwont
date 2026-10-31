@@ -16,7 +16,7 @@ struct StockTradingActionMessage : Message {
     char reserved;
     std::string reason;
 
-    explicit StockTradingActionMessage(std::span<char> rawData);
+    explicit StockTradingActionMessage(std::span<const char> rawData);
 };
 
 #endif //KWONT_STOCK_TRADING_ACTION_MESSAGE_HPP

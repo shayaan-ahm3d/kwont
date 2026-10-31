@@ -92,7 +92,7 @@ struct Message {
     uint16_t trackingNumber = 0;
     std::chrono::nanoseconds timestamp = std::chrono::nanoseconds{0};  // since midnight that day
 
-    explicit Message(std::span<char> rawData);
+    explicit Message(std::span<const char> rawData);
     virtual ~Message() = default;
 };
 

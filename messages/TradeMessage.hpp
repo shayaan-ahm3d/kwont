@@ -11,7 +11,7 @@ struct TradeMessage : Message {
     uint32_t price; // price(4)
     uint64_t matchNumber;
 
-    explicit TradeMessage(std::span<char> rawData);
+    explicit TradeMessage(std::span<const char> rawData);
 };
 
 #endif

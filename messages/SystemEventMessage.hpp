@@ -15,7 +15,7 @@ enum struct SystemEventCode : char {
 struct SystemEventMessage : Message {
     SystemEventCode eventCode;
 
-    explicit SystemEventMessage(std::span<char> rawData);
+    explicit SystemEventMessage(std::span<const char> rawData);
 };
 
 #endif  // KWONT_SYSTEM_EVENT_MESSAGE_HPP

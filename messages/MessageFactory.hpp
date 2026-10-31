@@ -7,7 +7,7 @@
 
 class MessageFactory {
 public:
-    static std::unique_ptr<Message> create(char* messageType);
+    static std::unique_ptr<Message> create(const char* messageType);
 };
 
 #endif  // KWONT_MESSAGE_FACTORY_HPP

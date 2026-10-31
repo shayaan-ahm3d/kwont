@@ -14,7 +14,7 @@ struct RpiiMessage : Message {
     std::string stock;
     InterestFlag interestFlag;
 
-    explicit RpiiMessage(std::span<char> rawData);
+    explicit RpiiMessage(std::span<const char> rawData);
 };
 
 #endif

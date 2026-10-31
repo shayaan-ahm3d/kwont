@@ -13,7 +13,7 @@ struct RegShoRestrictionMessage : Message {
     std::string stock;
     RegShoAction regShoAction;
 
-    explicit RegShoRestrictionMessage(std::span<char> rawData);
+    explicit RegShoRestrictionMessage(std::span<const char> rawData);
 };
 
 #endif

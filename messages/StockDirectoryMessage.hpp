@@ -59,7 +59,7 @@ struct StockDirectoryMessage : Message {
     uint32_t etpLeverageFactor;
     bool inverseIndicator;
 
-    explicit StockDirectoryMessage(std::span<char> rawData);
+    explicit StockDirectoryMessage(std::span<const char> rawData);
 };
 
 #endif  // KWONT_STOCK_DIRECTORY_MESSAGE_HPP

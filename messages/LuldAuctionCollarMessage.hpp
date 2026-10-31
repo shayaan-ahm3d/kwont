@@ -10,7 +10,7 @@ struct LuldAuctionCollarMessage : Message {
     uint32_t lowerAuctionCollarPrice;
     uint32_t auctionCollarExtension;
 
-    explicit LuldAuctionCollarMessage(const std::span<char> rawData);
+    explicit LuldAuctionCollarMessage(std::span<const char> rawData);
 };
 
 #endif

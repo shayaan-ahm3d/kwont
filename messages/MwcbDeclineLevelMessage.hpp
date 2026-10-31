@@ -8,7 +8,7 @@ struct MwcbDeclineLevelMessage : Message {
     uint64_t level2;
     uint64_t level3;
 
-    explicit MwcbDeclineLevelMessage(std::span<char> rawData);
+    explicit MwcbDeclineLevelMessage(std::span<const char> rawData);
 };
 
 #endif

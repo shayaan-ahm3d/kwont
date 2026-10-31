@@ -18,7 +18,7 @@ struct CrossTradeMessage : Message {
     uint64_t matchNumber;
     CrossType crossType;
 
-    explicit CrossTradeMessage(std::span<char> rawData);
+    explicit CrossTradeMessage(std::span<const char> rawData);
 };
 
 #endif

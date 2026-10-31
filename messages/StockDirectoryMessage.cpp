@@ -1,6 +1,6 @@
 #include "StockDirectoryMessage.hpp"
 
-StockDirectoryMessage::StockDirectoryMessage(std::span<char> rawData)
+StockDirectoryMessage::StockDirectoryMessage(const std::span<const char> rawData)
     : Message(rawData) {
     stock = {&rawData.at(11), 8};
     marketCategory = static_cast<MarketCategory>(rawData.at(19));

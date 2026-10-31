@@ -6,7 +6,7 @@
 struct BrokenTradeMessage : Message {
     uint64_t matchNumber;
 
-    explicit BrokenTradeMessage(std::span<char> rawData);
+    explicit BrokenTradeMessage(std::span<const char> rawData);
 };
 
 #endif

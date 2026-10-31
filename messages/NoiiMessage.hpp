@@ -41,7 +41,7 @@ struct NoiiMessage : Message {
     CrossType crossType;
     PriceVariationIndicator priceVariationIndicator;
 
-    explicit NoiiMessage(std::span<char> rawData);
+    explicit NoiiMessage(std::span<const char> rawData);
 };
 
 #endif

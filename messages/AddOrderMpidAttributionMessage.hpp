@@ -6,7 +6,7 @@
 struct AddOrderMpidAttributionMessage : AddOrderNoMpidMessage {
     std::string attribution;
 
-    explicit AddOrderMpidAttributionMessage(std::span<char> rawData);
+    explicit AddOrderMpidAttributionMessage(std::span<const char> rawData);
 };
 
 #endif

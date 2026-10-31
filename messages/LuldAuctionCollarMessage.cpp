@@ -1,6 +1,6 @@
 #include "LuldAuctionCollarMessage.hpp"
 
-LuldAuctionCollarMessage::LuldAuctionCollarMessage(const std::span<char> rawData) : Message(rawData) {
+LuldAuctionCollarMessage::LuldAuctionCollarMessage(const std::span<const char> rawData) : Message(rawData) {
     stock = {&rawData.at(11), 8};
     auctionCollarReferencePrice = rawData.at(19) << (3*BITS_PER_BYTE)
         | rawData.at(20) << (2*BITS_PER_BYTE)

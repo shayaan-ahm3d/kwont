@@ -14,7 +14,7 @@ struct DirectListingWithCapitalRaiseMessage : Message {
     uint32_t lowerPriceRangeCollar;
     uint32_t upperPriceRangeCollar;
 
-    explicit DirectListingWithCapitalRaiseMessage(std::span<char> rawData);
+    explicit DirectListingWithCapitalRaiseMessage(std::span<const char> rawData);
 };
 
 #endif

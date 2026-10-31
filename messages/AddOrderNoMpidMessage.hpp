@@ -11,7 +11,7 @@ struct AddOrderNoMpidMessage : Message {
     std::string stock;
     uint32_t price; // price(4)
 
-    explicit AddOrderNoMpidMessage(std::span<char> rawData);
+    explicit AddOrderNoMpidMessage(std::span<const char> rawData);
 };
 
 #endif

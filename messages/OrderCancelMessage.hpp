@@ -7,7 +7,7 @@ struct OrderCancelMessage: Message {
     uint64_t orderReferenceNumber;
     uint32_t cancelledShares;
 
-    explicit OrderCancelMessage(std::span<char> rawData);
+    explicit OrderCancelMessage(std::span<const char> rawData);
 };
 
 #endif
